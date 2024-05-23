@@ -1,11 +1,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from estimatePrice import estimatePrice
 
 def normalize(series):
     min_val = series.min()
     max_val = series.max()
     normalized_data = (series - min_val) / (max_val - min_val)
     return normalized_data
+
+def trainThetas(df):
+    print(df)
 
 def main():
     csv_file = 'data.csv'
@@ -20,6 +24,9 @@ def main():
     plt.xlabel('Kilometers')
     plt.ylabel('Price')
     plt.title('Price vs Kilometers')
-    plt.show();
+    # plt.show()
+
+    trainThetas(df_normalized)
+
 
 main()
