@@ -8,11 +8,19 @@ def normalize(series):
     normalized_data = (series - min_val) / (max_val - min_val)
     return normalized_data
 
-def trainThetas(df):
-    print(df)
+def trainTheta0(df):
+    learningRate = 0.1
+    t0 = learningRate * (1/len(df))
+    t1 = learningRate * (1/len(df))
+    for index, car in df.iterrows():
+        t0 = t0 + estimatePrice(car['km'], t0, t1) - car['price']
+        t1 = t1 + (estimatePrice(car['km'] - car['price'], t0, t1) * car['km'])
+    print("Theta0: ", t0)
+    print("Theta1: ", t1)
 
 def main():
     csv_file = 'data.csv'
+    thetaJson = 'values.json'
     df = pd.read_csv(csv_file)
     
     normalized_data = {}
@@ -24,9 +32,10 @@ def main():
     plt.xlabel('Kilometers')
     plt.ylabel('Price')
     plt.title('Price vs Kilometers')
-    # plt.show()
 
-    trainThetas(df_normalized)
+    trainTheta0(df_normalized)
+    plt.show()
+
 
 
 main()
