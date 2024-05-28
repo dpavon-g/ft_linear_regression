@@ -6,6 +6,14 @@ def estimatePrice(mileage, theta0, theta1):
     estimatePrice = float(theta0) + (float(theta1) * mileage)
     return estimatePrice
 
+def launchEstimatePrice(mileage):
+    with open("values.json", "r") as myJson:
+        myData = json.load(myJson)
+    
+    mileage = float(mileage)
+    estimateCarPrice = estimatePrice(mileage, myData["Theta0"], myData["Theta1"])
+
+    return(int(estimateCarPrice))
 
 def main():
     with open("values.json", "r") as myJson:

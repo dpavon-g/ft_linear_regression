@@ -4,8 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from estimatePrice import estimatePrice
 
-t0 = 0
-t1 = 0
+verbosed = False
+drawGraphic = False
+drawTrain = False
 
 def normalize(series):
     min_val = series.min()
@@ -72,7 +73,6 @@ def main():
     plt.xlabel('Kilometers')
     plt.ylabel('Price')
     plt.title('Price vs Kilometers')
-
 
     while (True):
         oldT0 = t0
