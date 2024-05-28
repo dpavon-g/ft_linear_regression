@@ -8,7 +8,7 @@ introduction = """
 
 
 In this project you will train a linear regresion model to predict the price 
-of a car due to its mileage.
+of a car based on its mileage.
 
 If you want to know more about the project dont hesitate to ask me or to
 look the documentation on my GitHub: 
@@ -51,7 +51,25 @@ estimatePriceMenu = """
 
 -------------------------------------------------------------------------------
 
-You are about to estimate the price of a car due its mileage.
+You are about to estimate the price of a car based on its mileage.
+
+"""
+
+moreInformation = """
+
+-------------------------------------------------------------------------------
+
+This project is the first from the \033[34mArtificial Intelligence branch of the 42 
+Network's outer core\033[0m. Here, you will train a linear regression model to predict
+the price of a car based on its mileage.
+
+The original project have its own .csv file with all the mileage and price of
+the cars, but you can also import your own if it has price and km columns.
+
+If you want to know more about the project dont hesitate to ask me or to
+look the documentation on my GitHub: 
+
+\033[35mhttps://github.com/dpavon-g/ft_linear_regression\033[0m
 
 """
 
@@ -93,6 +111,13 @@ def calculatePrice():
     input("Press enter to continue...")
     printStart()
 
+def showInfo():
+    os.system('clear')
+    print(title)
+    print(moreInformation)
+    input("Press enter to continue...")
+    printStart()
+
 def printStart():
     os.system('clear')
 
@@ -103,9 +128,9 @@ def printStart():
     if option == "1":
         printStart()
     elif option == "2":
-        printStart()
-    elif option == "3":
         calculatePrice()
+    elif option == "3":
+        showInfo()
     elif option == "4":
         exit
 
