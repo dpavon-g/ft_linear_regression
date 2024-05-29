@@ -1,6 +1,4 @@
-import sys
 import json
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from estimatePrice import estimatePrice
@@ -93,7 +91,7 @@ def launchTrain(csv_file, flags):
 
 
     writeThetasLine(t0, t1)
-    
+
     t0, t1 = denormalize(df, t0, t1)
     writeThetas('values.json', t0, t1)
 

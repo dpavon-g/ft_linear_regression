@@ -1,5 +1,6 @@
 from estimatePrice import launchEstimatePrice
 from train import launchTrain
+import json
 import os
 
 introduction = """
@@ -43,7 +44,8 @@ menu = """
                     1. Train the linear regression model.
                     2. Predict a price using the trained model.
                     3. Know more about the project.
-                    4. Exit
+                    4. Clean thetas.
+                    5. Exit.
 
 -------------------------------------------------------------------------------
 """
@@ -77,7 +79,7 @@ def printTitle():
     print(title)
 
 def validInput(value):
-    if (int(value) < 1 or int(value) > 4):
+    if (int(value) < 1 or int(value) > 5):
         return False
     
     return True
@@ -169,6 +171,15 @@ def trainModel(error = False):
     else:
         trainModel(True)
 
+def cleanThetas(jsonFile):
+    with open(jsonFile, 'w') as myJson:
+        json.dump({"Theta0": 0, "Theta1": 0}, myJson)
+
+    printTitle()
+    print("\nThetas set to 0 succesfully :)\n")
+    input("Press enter to continue...)")
+
+
 def printStart():
     printTitle()
     print(menu)
@@ -182,6 +193,9 @@ def printStart():
     elif option == "3":
         showInfo()
     elif option == "4":
+        cleanThetas("values.json")
+        printStart()
+    elif option == "5":
         exit
 
 
