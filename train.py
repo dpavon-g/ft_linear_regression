@@ -1,5 +1,6 @@
 import sys
 import json
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from estimatePrice import estimatePrice
@@ -34,9 +35,6 @@ def trainThetas(df, t0, t1):
     learningRate = 0.1
     sumErrorT0 = 0
     sumErrorT1 = 0
-    # global t0
-    # global t1
-    
     
     for index, car in df.iterrows():
         price = car['price']
@@ -55,14 +53,57 @@ def writeThetas(jsonFile, t0, t1):
     with open(jsonFile, 'w') as myJson:
         json.dump({"Theta0": t0, "Theta1": t1}, myJson)
 
-# def calculateError(df, t0, t1):
+def fillGraphic(df_normalized):
+    plt.scatter(df_normalized['km'], df_normalized['price'])
+    plt.xlabel('Kilometers')
+    plt.ylabel('Price')
+    plt.title('Price vs Kilometers')
 
+def writeThetasLine(t0, t1): 
+    price0 = estimatePrice(0, t0, t1)
+    price1 = estimatePrice(1, t0, t1)
+    plt.plot([0, 1], [price0, price1], color='red')
+
+def launchTrain(csv_file, flags):
+    df = pd.read_csv(csv_file)
+    t0, t1 = 0, 0
+
+    normalized_data = {}
+    normalized_data['price'] = normalize(df['price'])
+    normalized_data['km'] = normalize(df['km'])
+
+    df_normalized = pd.DataFrame(normalized_data)
+    fillGraphic(df_normalized)
+
+    while (True):
+        oldT0 = t0
+        oldT1 = t1
+        t0, t1 = trainThetas(df_normalized, t0, t1)
+        if (flags["verbose"] == True):
+            print("Theta0: ", t0)
+            print("Theta1: ", t1)
+        
+        if (t0 == oldT0 and t1 == oldT1):
+            break
+        if (flags["graphicTrain"] == True):
+            plt.clf()
+            fillGraphic(df_normalized)
+            writeThetasLine(t0, t1)
+            plt.pause(0.01)
+
+
+    writeThetasLine(t0, t1)
+    
+    t0, t1 = denormalize(df, t0, t1)
+    writeThetas('values.json', t0, t1)
+
+    if (flags["graphicFinish"] == True):
+        plt.show()
 
 def main():
     csv_file = 'data.csv'
     df = pd.read_csv(csv_file)
-    t0 = 0
-    t1 = 0
+    t0, t1 = 0, 0
     
     normalized_data = {}
     normalized_data['price'] = normalize(df['price'])
@@ -95,5 +136,5 @@ def main():
     plt.show()
 
 
-
-main()
+if __name__ == "__main__":
+    main()
