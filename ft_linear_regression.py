@@ -1,5 +1,6 @@
 from estimatePrice import launchEstimatePrice
 from train import launchTrain
+import pandas as pd
 import json
 import os
 
@@ -44,8 +45,9 @@ menu = """
                     1. Train the linear regression model.
                     2. Predict a price using the trained model.
                     3. Know more about the project.
-                    4. Clean thetas.
-                    5. Exit.
+                    4. Calculate the precision of the model.
+                    5. Clean thetas.
+                    6. Exit.
 
 -------------------------------------------------------------------------------
 """
@@ -79,7 +81,7 @@ def printTitle():
     print(title)
 
 def validInput(value):
-    if (int(value) < 1 or int(value) > 5):
+    if (int(value) < 1 or int(value) > 6):
         return False
     
     return True
@@ -161,6 +163,7 @@ def trainModel(error = False):
             flags["graphicFinish"] = True
         elif myInput == "Q":
             return -1
+        print("Training...")
         launchTrain(inputFile, flags)
 
         printTitle()
@@ -179,6 +182,33 @@ def cleanThetas(jsonFile):
     print("\nThetas set to 0 succesfully :)\n")
     input("Press enter to continue...)")
 
+def calculatePrecision(error = False):
+    printTitle()
+    print("\nYou are going to calculate the precision of the algotihm.")
+    print("Write 'Q' to exit.\n")
+
+    if error == True:
+        print("Invalid parameter...")
+    inputFile = input("Insert the .csv path: ")
+
+    if inputFile == "Q":
+        return -1
+
+    if os.path.exists(inputFile):
+        printTitle()
+        df = pd.read_csv(inputFile)
+        sumaReal = df["price"].sum()
+        sumaPredict = 0
+        for valor in df["km"]:
+            sumaPredict = sumaPredict + launchEstimatePrice(valor)
+        porcent = 100 - abs(((sumaPredict - sumaReal) / sumaReal) * 100)
+        print("The model has a precision of the: " + str(porcent) + "%")
+        input("Press enter to continue...)")
+        return (-1)
+    else:
+        calculatePrecision(True)
+
+    
 
 def printStart():
     printTitle()
@@ -193,9 +223,12 @@ def printStart():
     elif option == "3":
         showInfo()
     elif option == "4":
+        if calculatePrecision() == -1:
+            printStart()
+    elif option == "5":
         cleanThetas("values.json")
         printStart()
-    elif option == "5":
+    elif option == "6":
         exit
 
 
