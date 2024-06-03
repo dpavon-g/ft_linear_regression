@@ -1,8 +1,16 @@
 
+<br>
+
+<div align="center"> 
+    <img src="./resources/Menu.png" alt="Training" width="600"/>
+    <br>
+</div>
+
+<br>
+
 # ft_linear_regression
 
 Introduction to machine learning project provided by the Artificial Intelligence branch of the 42 Network.
-
 
 
 
@@ -24,3 +32,23 @@ To train the model and correctly solve the problem, we will implement the gradie
 </div>
 
 <br>
+
+### Gradient descent
+
+The gradient descent algorithm is a method used to optimize a function. This function is usually a cost function that measures how poorly the model is performing in predicting the data.
+
+#### How does gradient descent do that?
+
+The algorithm uses a type of parameters called thetas to adjust the model and minimize the error between the model's predictions and the actual values.
+
+In this use case of gradient descent, I needed to calculate and adjust two different thetas ( θ ), Theta0 and Theta1. For each one, I implemented the following formulas:
+
+\[
+\text{} \theta_0 = \text{learningRate} \times \frac{1}{m} \sum_{i=0}^{m-1} (\text{estimatePrice}(\text{mileage}[i]) - \text{price}[i])
+\]
+
+\[
+\text{} \theta_1 = \text{learningRate} \times \frac{1}{m} \sum_{i=0}^{m-1} (\text{estimatePrice}(\text{mileage}[i]) - \text{price}[i]) \times \text{mileage}[i]
+\]
+
+The objective here is to iteratively go through all the data until the error between the estimated price and the original price is sufficiently low. Once the difference is acceptably low, the theta values should be saved, and the loop should be terminated.
