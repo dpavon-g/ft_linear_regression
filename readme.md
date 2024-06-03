@@ -16,4 +16,11 @@ To do this, we need to develop two programs. One of them is responsible for pred
 
 To train the model and correctly solve the problem, we will implement the gradient descent algorithm. This algorithm is widely used in the fields of machine learning, data science, and mathematics to minimize the prediction error.
 
-![Algorithm training](resources/training.gif)
+<br>
+
+<div align="center"> 
+    <img src="./resources/training.gif" alt="Training" width="400"/>
+    <br>
+</div>
+
+<br>
