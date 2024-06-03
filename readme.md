@@ -13,10 +13,10 @@
 Introduction to machine learning project provided by the Artificial Intelligence branch of the 42 Network.
 
 ## Content table
-- [About the project](#AboutTheProject)
-- [Train the model](#TrainTheModel)
-- [Estimate price](#Esti)
-- [Instalation](#Instalation)
+- [About the project](#about-the-project)
+- [Train the model](#train-the-model)
+- [Estimate price](#estimate-price)
+- [Instalation](#instalation)
 
 <hr>
 
