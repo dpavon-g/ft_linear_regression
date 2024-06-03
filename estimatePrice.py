@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-import numpy as np
 import json
 
 def estimatePrice(mileage, theta0, theta1):
