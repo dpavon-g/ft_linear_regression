@@ -12,7 +12,13 @@
 
 Introduction to machine learning project provided by the Artificial Intelligence branch of the 42 Network.
 
+## Content table
+- [About the project](#AboutTheProject)
+- [Train the model](#TrainTheModel)
+- [Estimate price](#Esti)
+- [Instalation](#Instalation)
 
+<hr>
 
 ## About the project
 
@@ -20,7 +26,8 @@ The main goal of this project is to implement by using linear regression the pri
 
 To do this, we need to develop two programs. One of them is responsible for predicting the car's price based on its mileage, and the other is tasked with training the model to effectively adjust the parameters needed for the first program to predict the price.
 
-## The algorithm
+
+## Train the model
 
 To train the model and correctly solve the problem, we will implement the gradient descent algorithm. This algorithm is widely used in the fields of machine learning, data science, and mathematics to minimize the prediction error.
 
@@ -52,6 +59,19 @@ In this use case of gradient descent, I needed to calculate and adjust two diffe
 
 <br>
 
-
-
 The objective here is to iteratively go through all the data until the error between the estimated price and the original price is sufficiently low. Once the difference is acceptably low, the theta values should be saved, and the loop should be terminated.
+
+## Estimate price
+
+You will need to use a simple lineal function to predict the price given a mileage
+
+<br>
+
+<div align="center"> 
+    <img src="./resources/formulalineal.png" alt="Training" width="500"/>
+    <br>
+</div>
+
+<br>
+
+Where, theta0 and theta1 are the same calculated before.
