@@ -42,6 +42,7 @@ The gradient descent algorithm is a method used to optimize a function. This fun
 The algorithm uses a type of parameters called thetas to adjust the model and minimize the error between the model's predictions and the actual values.
 
 In this use case of gradient descent, I needed to calculate and adjust two different thetas ( θ ), Theta0 and Theta1. For each one, I implemented the following formulas:
+
 <br>
 
 <div align="center"> 
