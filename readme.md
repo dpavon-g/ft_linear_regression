@@ -46,7 +46,7 @@ In this use case of gradient descent, I needed to calculate and adjust two diffe
 <br>
 
 <div align="center"> 
-    <img src="./resources/formula0.png" alt="Training" width="500" style="border-radius: 10px;"/>
+    <img src="./resources/formula0.png" alt="Training" width="500"/>
     <br>
 </div>
 
