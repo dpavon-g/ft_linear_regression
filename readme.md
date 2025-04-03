@@ -10,7 +10,7 @@
 
 # ft_linear_regression
 
-Introduction to machine learning project provided by the Artificial Intelligence branch of the 42 Network.
+Introduction to machine learning project.
 
 ## Content table
 - [About the project](#about-the-project)
